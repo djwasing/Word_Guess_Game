@@ -6,6 +6,10 @@
     text-align: center;
 }
 
-.word_column {
+.answer_column {
+    text-align: center;
+}
+
+.wrong_remaining {
     text-align: center;
 }
