@@ -1,14 +1,3 @@
-//function to replace * in wordIndex with correct guessed letters
-String.prototype.setCharAt = function (index, char) {
-    if (index > this.length - 1) {
-        return this.toString();
-    }
-    else {
-        return this.substr(0, index) + char + this.substr(index + 1);
-    }
-}
-
-
 
 //Create array of variable words as answers
 
@@ -17,8 +6,8 @@ String.prototype.setCharAt = function (index, char) {
 var wordArray =
     [
         "guitar",
-        "cowboy",
-        "buckle",
+        "whiskey",
+        "barn",
         "horse",
         "beer",
         "truck",
@@ -26,6 +15,9 @@ var wordArray =
         "south",
         "cowgirl",
         "boots",
+        "neon",
+        "country",
+        "flag",
     ];
 
 /**Set variables for: 
@@ -49,33 +41,9 @@ var winsField;
 var lossesField;
 var remaningField;
 
-//function to replace * in wordIndex with correct guessed letters
-String.prototype.setCharAt = function (index, char) {
-    if (index > this.length - 1) {
-        return this.toString();
-    }
-    else {
-        return this.substr(0, index) + char + this.substr(index + 1);
-    }
-}
-
 //On load, computer chooses random word.  
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    //     randomIndex = Math.floor(Math.random() * (wordArray.length));
-    //     wordIndex = wordArray[randomIndex];
-    //     console.log(wordArray[randomIndex]);
-    //     console.log(wordIndex);
-
-    //function to replace * in wordIndex with correct guessed letters
-    String.prototype.setCharAt = function (index, char) {
-        if (index > this.length - 1) {
-            return this.toString();
-        }
-        else {
-            return this.substr(0, index) + char + this.substr(index + 1);
-        }
-    }
 
     //display remaning wrong guesses, wins, losses
 
@@ -116,40 +84,70 @@ function startGame() {
     randomIndex = Math.floor(Math.random() * (wordArray.length));
     wordIndex = wordArray[randomIndex];
     remainingField.innerText = maxWrong;
-    //get the index of chosen word, then give blanks for the index value of the word. 
+
+    //get the index of chosen word, then give stars for the index value of the word. 
     for (var i = 0; i < wordArray[randomIndex].length; i++) {
-        answerArray[i] = " * ";
-        //answerArray.repeat(answerArray.length());
-        console.log(answerArray)
+        answerArray[i] = "*";
+        //answerArray = answerArray.length();
+        //console.log(answerArray)
     };
+    //console log the random word
     console.log(wordIndex);
-    var stringArray = answerArray.join(" ");
+
+    var stringArray = answerArray.join("");
     document.getElementById("correct_word").innerHTML = stringArray;
+    userGuess = [];
     //replace the wins counter with 0.
     //document.getElementById("#wins").innerText = wins;
 }
+var currentWordStars;
 
 
 //only push letters that have not already been pressed
 function makeGuess(letter) {
-    //function to replace * in wordIndex with correct guessed letters
-    String.prototype.setCharAt = function (index, char) {
-        if (index > this.length - 1) {
-            return this.toString();
-        }
-        else {
-            return this.substr(0, index) + char + this.substr(index + 1);
-        }
-    }
+
     //var userGuess = event.key;
     if (userGuess.indexOf(letter) === -1) {
         userGuess.push(letter);
         console.log(letter);
-        var currentWordStars = document.getElementById("correct_word").innerText;
-        console.log(currentWordStars);
-        currentWordStars = setCharAt(wordIndex.indexOf(letter), letter);
+
+        //function to replace * in wordIndex with correct guessed letters
+        String.prototype.setCharAt = function (index, char) {
+            if (index > this.length - 1) {
+                return this.toString();
+            }
+            else {
+                return this.substr(0, index) + char + this.substr(index + 1);
+            }
+        };
+
+        //set the stars to equal the length of the random word
+        currentWordStars = document.getElementById("correct_word").innerText;
+        var indices = [];
+        
+        for (var i = 0; i < wordIndex.length; i++) {
+            if (wordIndex[i] === letter) indices.push(i);
+        }
+        //console.log(indices)
+
+        for (let i = 0; i < indices.length; i++) {
+            const index = indices[i];
+            currentWordStars = currentWordStars.setCharAt(index, letter);
+            console.log(currentWordStars);
+        }
+        
         document.getElementById("correct_word").innerText = currentWordStars;
-    };
+        //if the user guesses the correct word, add 1 to the wins field, reset the remaining guesses, and reset the game
+        if(currentWordStars === wordIndex) {
+            wins++;
+            winsField.innerText = wins;
+            remainingField.innerText = 5;
+            startGame();
+        }
+        
+        
+        
+    }
 
 
     //check if userGuess is in randomIndex
@@ -158,11 +156,14 @@ function makeGuess(letter) {
     if (wordIndex.indexOf(letter) === -1) {
         //maxWrong = maxWrong -1
         maxWrong--;
-        console.log(maxWrong);
+        //console.log(maxWrong);
         //console.log
         if (maxWrong > -1) {
             remainingField.innerText = maxWrong;
         }
+        //show wrong letters in the wrong guesses field
+        document.getElementById("wrong_letters").innerText = wrongGuesses;
+
         //when user is out of wrong guesses, increase losses to 1 and display
         if (maxWrong === 0) {
             losses++;
@@ -170,6 +171,19 @@ function makeGuess(letter) {
             startGame();
         }
     }
+
+
+
+
+
+
+    // }
+    //let x = '****'.setCharAt(y.indexOf(letter), letter);
+    //console.log(x)
+
+    //ISSUES: 
+    // 1. index of correct word not resetting, always defaulting to largest index since page reload
+    // 2. wrong guessess not showing the letter guessed. Once a wrong letter is guessed, array showing all entered letters appears. 
 
 
 
