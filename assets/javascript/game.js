@@ -84,14 +84,19 @@ function startGame() {
     randomIndex = Math.floor(Math.random() * (wordArray.length));
     wordIndex = wordArray[randomIndex];
     remainingField.innerText = maxWrong;
-
+    wrongGuesses = [];
+    answerArray = [];
+    //console.log(wordArray[randomIndex].length);
     //get the index of chosen word, then give stars for the index value of the word. 
     for (var i = 0; i < wordArray[randomIndex].length; i++) {
-        answerArray[i] = "*";
+        answerArray.push(" _ ");
+        //answerArray = [randomIndex].length;
         //answerArray = answerArray.length();
         //console.log(answerArray)
+        
     };
     //console log the random word
+    console.log(answerArray);
     console.log(wordIndex);
 
     var stringArray = answerArray.join("");
@@ -100,6 +105,8 @@ function startGame() {
     //replace the wins counter with 0.
     //document.getElementById("#wins").innerText = wins;
 }
+
+
 var currentWordStars;
 
 
@@ -146,7 +153,6 @@ function makeGuess(letter) {
         }
         
         
-        
     }
 
 
@@ -163,12 +169,13 @@ function makeGuess(letter) {
         }
         //show wrong letters in the wrong guesses field
         document.getElementById("wrong_letters").innerText = wrongGuesses;
-
-        //when user is out of wrong guesses, increase losses to 1 and display
+        
+        //when user is out of wrong guesses, increase losses to 1, display it, and reset maxWrong to 5. 
         if (maxWrong === 0) {
             losses++;
             lossesField.innerText = losses;
             startGame();
+            maxWrong = 5;
         }
     }
 
@@ -182,7 +189,7 @@ function makeGuess(letter) {
     //console.log(x)
 
     //ISSUES: 
-    // 1. index of correct word not resetting, always defaulting to largest index since page reload
+    // 1. index of correct word not resetting, always defaulting to largest index since page reload, showing stars for longest word
     // 2. wrong guessess not showing the letter guessed. Once a wrong letter is guessed, array showing all entered letters appears. 
 
 
