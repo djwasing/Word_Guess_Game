@@ -13,7 +13,6 @@ var wordArray =
         "truck",
         "farm",
         "south",
-        "cowgirl",
         "boots",
         "neon",
         "country",
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 //function to record the user guess
 
-document.onkeydown = function (event) {
+document.onkeyup = function (event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         makeGuess(event.key.toLowerCase())
     };
@@ -89,11 +88,11 @@ function startGame() {
     //console.log(wordArray[randomIndex].length);
     //get the index of chosen word, then give stars for the index value of the word. 
     for (var i = 0; i < wordArray[randomIndex].length; i++) {
-        answerArray.push(" _ ");
+        answerArray.push("*");
         //answerArray = [randomIndex].length;
         //answerArray = answerArray.length();
         //console.log(answerArray)
-        
+
     };
     //console log the random word
     console.log(answerArray);
@@ -131,28 +130,35 @@ function makeGuess(letter) {
         //set the stars to equal the length of the random word
         currentWordStars = document.getElementById("correct_word").innerText;
         var indices = [];
-        
+
         for (var i = 0; i < wordIndex.length; i++) {
             if (wordIndex[i] === letter) indices.push(i);
         }
-        //console.log(indices)
+        //console.log(indices + "here it is")
 
         for (let i = 0; i < indices.length; i++) {
             const index = indices[i];
             currentWordStars = currentWordStars.setCharAt(index, letter);
             console.log(currentWordStars);
         }
-        
+
         document.getElementById("correct_word").innerText = currentWordStars;
         //if the user guesses the correct word, add 1 to the wins field, reset the remaining guesses, and reset the game
-        if(currentWordStars === wordIndex) {
+        if (currentWordStars === wordIndex) {
             wins++;
             winsField.innerText = wins;
             remainingField.innerText = 5;
-            startGame();
+            //place a timeout function around these 2
+
+            setTimeout(function () {
+                alert("You win! Press OK for Next Word!")
+                startGame();
+            }, 1000);
+
+            return;
         }
-        
-        
+
+
     }
 
 
@@ -168,8 +174,9 @@ function makeGuess(letter) {
             remainingField.innerText = maxWrong;
         }
         //show wrong letters in the wrong guesses field
-        document.getElementById("wrong_letters").innerText = wrongGuesses;
-        
+        wrongGuesses.push(letter);
+        document.getElementById("wrong_letters").innerText = wrongGuesses.join(", ");
+
         //when user is out of wrong guesses, increase losses to 1, display it, and reset maxWrong to 5. 
         if (maxWrong === 0) {
             losses++;
