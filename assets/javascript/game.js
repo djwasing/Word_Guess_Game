@@ -17,6 +17,13 @@ var wordArray =
         "neon",
         "country",
         "flag",
+        "america", 
+        "freedom",
+        "moonshine",
+        "west",
+        "rodeo",
+        "music",
+        "radio",
     ];
 
 /**Set variables for: 
@@ -148,12 +155,13 @@ function makeGuess(letter) {
             wins++;
             winsField.innerText = wins;
             remainingField.innerText = 5;
+            document.getElementById("wrong_letters").innerText = ("...");
             //place a timeout function around these 2
 
             setTimeout(function () {
-                alert("You win! Press OK for Next Word!")
+                alert("Like a Duck on a June Bug! Press OK for Next Word!")
                 startGame();
-            }, 1000);
+            }, 750);
 
             return;
         }
@@ -181,23 +189,19 @@ function makeGuess(letter) {
         if (maxWrong === 0) {
             losses++;
             lossesField.innerText = losses;
-            startGame();
             maxWrong = 5;
+            document.getElementById("wrong_letters").innerText = ("...");
+            alert("Somebody Poisoned the Water Hole! Press OK for New Word!")
+            setTimeout(function(){
+                startGame();
+            }, 500);
+            
         }
     }
 
-
-
-
-
-
-    // }
-    //let x = '****'.setCharAt(y.indexOf(letter), letter);
-    //console.log(x)
-
-    //ISSUES: 
-    // 1. index of correct word not resetting, always defaulting to largest index since page reload, showing stars for longest word
-    // 2. wrong guessess not showing the letter guessed. Once a wrong letter is guessed, array showing all entered letters appears. 
+    //TO DO LIST:
+    //make a winAlert array with different messages and a random selector for it. 
+    //do the same for losses. 
 
 
 
