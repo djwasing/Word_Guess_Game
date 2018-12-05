@@ -3,9 +3,17 @@
     margin: 0% auto;
 }
 
+
+.display-4 {
+    margin-top: -25px;
+}
+
+.lead {
+    margin-bottom: -15px;
+}
+
 .game_column {
     text-align: center;
-    margin-left: 0%;
 }
 
 .answer_column {

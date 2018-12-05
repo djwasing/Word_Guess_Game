@@ -24,6 +24,9 @@ var wordArray =
         "rodeo",
         "music",
         "radio",
+        "twang", 
+        "banjo",
+        "fiddle",
     ];
 
 /**Set variables for: 
