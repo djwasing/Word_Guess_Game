@@ -1,25 +1,86 @@
-.jumbotron {
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.bg {
+    background-image: url("http://genchi.info/images/free-western-cowboy-wallpaper-2.jpg");
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.headRow {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.headCol {
+    background-color: #ffe5cc;
+    border-radius: 8px;
+    float: none;
+    margin: 0 auto;
+}
+
+.header {
     text-align: center;
     margin: 0% auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
-
-.display-4 {
-    margin-top: -25px;
+#navRow {
+    background: linear-gradient(black, #ffe5cc);
 }
 
-.lead {
-    margin-bottom: -15px;
+.navbar-brand {
+    height: 60px;
+    position: static;
+
+}
+
+.nameText {
+    float: left;
+    line-height: 50px;
+    margin-left: 20px;
+    color: black;
+}
+
+#avatar {
+    border-radius: 50%;
+    float: left;
+}
+
+.gameRow {
+    
 }
 
 .game_column {
     text-align: center;
+    background-color: #ffe5cc;
+    
+    border-radius: 8px;
+    float: none;
+    margin: 0 auto;
 }
 
 .answer_column {
     text-align: center;
+    margin-left: 10px;
+    border-radius: 8px;
+    background-color: #ffe5cc;
+    float: none;
+    margin: 0 auto;
 }
 
 .wrong_remaining {
     text-align: center;
+    background-color: #ffe5cc;
+    border-radius: 8px;
+    float: none;
+    margin: 0 auto;
 }

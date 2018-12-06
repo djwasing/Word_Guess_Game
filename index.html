@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Word Guess Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -13,30 +14,50 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">Hangman!</h1>
-        <h2 class="display-5">Country Music Edition</h2>
-        <p class="lead">Howdy, Partners! Welcome to Hangman! - Country Music Edition! Guess any letter to get started!</p>
-        <!-- <hr class="my-4"> -->
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 wrong_remaining">
-            <h3 class="wrong_guesses">Wrong Guesses: <span id="wrong_letters"> ...</span></h3>
-            <br>
-            <h3 class="remaining_guesses">Remaining Guesses: <span id="remaining_guesses"> </span></h3>
+    <div class="bg">
+        <div class="row">
+            <div class="col-md-12 navRow" id="navRow">
+                <nav class="navbar">
+                    <a class="navbar-brand" href="https://djwasing.github.io/Bootstrap_Portfolio/">
+                        <img src="assets/images/photo1.jpg" width="50" height="50" class="d-inline-block align-top" id="avatar"
+                            alt="small picture of me">
+                        <div class="nameText">
+                            Don Wasinger
+                        </div>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <div class="row headRow">
+            <div class="col-md-6 headCol">
+                <div class="header">
+                    <h1 class="display-4">Hangman!</h1>
+                    <h2 class="display-5">Country Music Edition</h2>
+                    <p class="lead">Howdy, Partners! Welcome to Hangman! - Country Music Edition! Guess any letter to
+                        get
+                        started!</p>
+                    <!-- <hr class="my-4"> -->
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-4 answer_column">
-            <h1 class="guess_word">Guess the word: <br> <span id="correct_word"> </span></h1>
-        </div>
+        <div class="row gameRow">
+            <div class="col-md-3 wrong_remaining">
+                <h3 class="wrong_guesses">Wrong Guesses: <span id="wrong_letters"> ...</span></h3>
+                <br>
+                <h3 class="remaining_guesses">Lives: <span id="remaining_guesses"> </span></h3>
+            </div>
 
-        <div class="col-md-4 game_column">
-            <h3 class="wins">Wins: <span id="wins"> </span></h3>
-            <br>
-            <h3 class="losses">Losses: <span id="losses"> </span></h3>
-        </div>
+            <div class="col-md-4 answer_column">
+                <h1 class="guess_word">Guess the word: <br> <span id="correct_word"> </span></h1>
+            </div>
 
+            <div class="col-md-3 game_column">
+                <h3 class="wins">Wins: <span id="wins"> </span></h3>
+                <br>
+                <h3 class="losses">Losses: <span id="losses"> </span></h3>
+            </div>
+        </div>
     </div>
 
 
