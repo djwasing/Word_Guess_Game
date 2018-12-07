@@ -194,7 +194,7 @@ function makeGuess(letter) {
             lossesField.innerText = losses;
             maxWrong = 5;
             document.getElementById("wrong_letters").innerText = ("...");
-            alert("Somebody Poisoned the Water Hole! Press OK for New Word!")
+            alert("Somebody Poisoned the Water Hole! Hint: Check Console for the answer... Press OK for New Word!")
             setTimeout(function(){
                 startGame();
             }, 500);
