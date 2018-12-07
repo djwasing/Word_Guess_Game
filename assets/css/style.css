@@ -11,12 +11,25 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 
 .headRow {
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+/* .links {
+    justify-content: right;
+    margin-right: 5%;
+} */
+
+#twitterLink {
+    margin-right: 5px;
+    float: right;
+}
+
+.githubLink {
+    
 }
 
 .headCol {
@@ -27,20 +40,28 @@ body, html {
 }
 
 .header {
+    padding-bottom: 10px;
+}
+
+.header {
     text-align: center;
     margin: 0% auto;
     margin-top: 20px;
     margin-bottom: 60px;
 }
 
-#navRow {
+.navbar {
     background: linear-gradient(black, #ffe5cc);
 }
 
 .navbar-brand {
     height: 60px;
-    position: static;
+    /* position: static; */
+}
 
+.nav {
+    align-items: center;
+    margin-right: 4%;
 }
 
 .nameText {

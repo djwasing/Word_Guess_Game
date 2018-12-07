@@ -162,7 +162,7 @@ function makeGuess(letter) {
             //place a timeout function around these 2
 
             setTimeout(function () {
-                alert("Like a Duck on a June Bug! Press OK for Next Word!")
+                alert("Yee-Haw! You Won! Press OK for Next Word!")
                 startGame();
             }, 750);
 
